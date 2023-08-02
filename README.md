@@ -21,16 +21,17 @@
 ## Tutorial, Instalação e execução
 ### Ter previamente instalado: </br>
 
-### JAVA </br>
-### Maven (mvn) </br>
+#### JAVA </br>
+#### Maven (mvn) </br>
 
-### Instalar o webdriver-manager</br>
+## Instalar o webdriver-manager</br>
 ### Em uma nova aba ou janela de seu terminal, executar os seguintes comandos: </br>
 
-### npm install -g webdriver-manager </br>
-### webdriver-manager update </br>
-### webdriver-manager start </br>
-### Abrir o projeto no editor de texto de sua preferência </br>
+#### npm install -g webdriver-manager </br>
+#### webdriver-manager update </br>
+#### webdriver-manager start </br>
+
+## Abrir o projeto no editor de texto de sua preferência </br>
 ### No terminal de seu editor de texto, executar os seguintes comandos: </br>
 
-### mvn clean test </br>
+#### mvn clean test </br>

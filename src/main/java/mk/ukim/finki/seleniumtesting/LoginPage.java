@@ -1,10 +1,10 @@
 package mk.ukim.finki.seleniumtesting;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.util.Arrays;
 
 public class LoginPage extends BasePage {
 
@@ -22,25 +22,44 @@ public class LoginPage extends BasePage {
     }
 
     public void registrar(String user, String person, String pass, String passconfirm) throws InterruptedException {
-        driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div[1]/form/div[3]/button[2]")).click();
+        driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div[1]/form/div[3]/button[2]"))
+                .click();
         Thread.sleep(5000);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email"))).isDisplayed();
-        driver.findElement(By.name("email")).sendKeys(user);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div[2]/form/div[2]/input")))
+                .isEnabled();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div[2]/form/div[2]/input")))
+                .isDisplayed();
+        driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div[2]/form/div[2]/input"))
+                .sendKeys(user);
         Thread.sleep(5000);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("name"))).isDisplayed();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("name")))
+                .isDisplayed();
         driver.findElement(By.name("name")).sendKeys(person);
         Thread.sleep(5000);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("password"))).isDisplayed();
-        driver.findElement(By.name("password")).sendKeys(pass);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div[2]/form/div[4]/div/input")))
+                .isDisplayed();
+        driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div[2]/form/div[4]/div/input"))
+                .sendKeys(pass);
         Thread.sleep(5000);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("passwordConfirmation"))).isDisplayed();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("passwordConfirmation")))
+                .isDisplayed();
         driver.findElement(By.name("passwordConfirmation")).sendKeys(passconfirm);
         Thread.sleep(5000);
-        driver.findElement(By.xpath("//*[@id=\"toggleAddBalance\"]")).click();
+        driver.findElement(By.xpath("//*[@id=\"toggleAddBalance\"]"))
+                .click();
         Thread.sleep(5000);
-        driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div[2]/form/button")).click();
+        driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div[2]/div/div[2]/form/button"))
+                .click();
         Thread.sleep(5000);
+    }
+
+    public void closeRegistrar() throws InterruptedException {
         driver.findElement(By.id("btnCloseModal")).click();
+        Thread.sleep(5000);
+    }
+
+    public void closehomepage() throws InterruptedException {
+        driver.findElement(By.id("btnExit")).click();
         Thread.sleep(5000);
     }
 
@@ -78,23 +97,25 @@ public class LoginPage extends BasePage {
     }
 
     public String getsaldoDisponivel() {
-        driver.findElement(By.xpath("//*[@id=\"btn-EXTRATO\"]/span/img")).click();
-        WebElement saldoDisponivel = driver.findElement(By.id("textBalanceAvailable"));
+        WebElement saldoDisponivel = driver.findElement(By.xpath("//*[@id=\"textBalance\"]/span"));
         return saldoDisponivel.getText();
     }
 
     public String gettextAccountNumber() {
-        String accountNumber = driver.findElements(By.id("textAccountNumber")).get(2).getText();
-        return accountNumber;
+        String accountNumber = driver.findElements(By.xpath("//*[@id=\"textAccountNumber\"]/span")).get(0).getText();
+        String[] result = accountNumber.split("[-.;,:!?]");
+        String conta =  Arrays.stream(result).findFirst().get();
+        return conta;
     }
 
     public String gettextdigit() {
-        String digit = driver.findElements(By.id("textAccountNumber")).get(4).getText();
+        int tamanhoaccountNumber = (driver.findElements(By.xpath("//*[@id=\"textAccountNumber\"]/span")).get(0).getText().length());
+        String digit = driver.findElements(By.xpath("//*[@id=\"textAccountNumber\"]/span")).get(0).getText().substring(tamanhoaccountNumber-1);
         return digit;
     }
 
     public String getconfirmMessage() {
-        WebElement confirmPage = driver.findElement(By.xpath("//*[@id=\"modalText\"]"));
+        WebElement confirmPage = driver.findElement(By.id("modalText"));
         return confirmPage.getText();
     }
 
