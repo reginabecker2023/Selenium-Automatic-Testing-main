@@ -1,6 +1,6 @@
 ## Selenium automatic testing 
-### Estrutura de automação para Bugbank 
-#### O banco com bugs e falhas do seu jeito.</br>
+- **Estrutura de automação para Bugbank**
+- O banco com bugs e falhas do seu jeito.
 
 ## Ferramentas utilizadas:
 - [VSCode](https://code.visualstudio.com/ "VSCode") / [IntelliJ CE](https://www.jetbrains.com/idea/download/ "IntelliJ CE")
@@ -19,19 +19,19 @@
     - sendKeys
 
 ## Tutorial, Instalação e execução
-### Ter previamente instalado: </br>
+- **Ter previamente instalado:**
 
-#### JAVA </br>
-#### Maven (mvn) </br>
+    - JAVA 
+    - Maven (mvn) 
 
 ## Instalar o webdriver-manager</br>
-### Em uma nova aba ou janela de seu terminal, executar os seguintes comandos: </br>
+- **Em uma nova aba ou janela de seu terminal, executar os seguintes comandos:**
 
 #### npm install -g webdriver-manager </br>
 #### webdriver-manager update </br>
 #### webdriver-manager start </br>
 
 ## Abrir o projeto no editor de texto de sua preferência </br>
-### No terminal de seu editor de texto, executar os seguintes comandos: </br>
+- **No terminal de seu editor de texto, executar os seguintes comandos:**
 
 #### mvn clean test </br>
