@@ -1,5 +1,4 @@
 package mk.ukim.finki.seleniumtesting;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
@@ -12,6 +11,6 @@ public class BasePage {
         this.driver = driver;
         wait = new WebDriverWait(driver, 30);
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
     }
 }
