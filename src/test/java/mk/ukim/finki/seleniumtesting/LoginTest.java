@@ -22,7 +22,7 @@ public class LoginTest {
             LoginPage loginPage = new LoginPage(driver);
             loginPage.open();
             assertTrue(loginPage.isLoaded());
-            loginPage.login("gabdimitrievski111@gmail.com", "wrong_password_test");
+            loginPage.login("userincorrectpassword@gmail.com", "wrong_password_test");
             String errorMessage = loginPage.getErrorMessage();
             assertEquals(errorMessage, "Usuário ou senha inválido.\n" +
                     "Tente novamente ou verifique suas informações!");
